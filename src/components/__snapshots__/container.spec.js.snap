@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`container component renders correctly 1`] = `
+<div
+  css={
+    Array [
+      Object {
+        "@media (min-width: 412px)": Object {
+          "paddingLeft": "2rem",
+          "paddingRight": "2rem",
+        },
+        "boxSizing": "border-box",
+        "marginLeft": "auto",
+        "marginRight": "auto",
+        "paddingLeft": "2rem",
+        "paddingRight": "2rem",
+        "position": "relative",
+      },
+      Object {
+        "maxWidth": "69.6rem",
+      },
+    ]
+  }
+/>
+`;

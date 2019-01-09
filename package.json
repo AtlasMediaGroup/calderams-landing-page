@@ -1,0 +1,39 @@
+{
+  "name": "landing-page",
+  "version": "0.1.0",
+  "license": "Atlas Media Group Ltd",
+  "private": true,
+  "dependencies": {
+    "gatsby-plugin-glamor": "^2.0.7",
+    "glamor": "^2.20.40",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-entypo": "^1.3.0",
+    "react-helmet": "^5.2.0",
+    "react-particles-js": "^2.4.2",
+    "react-scripts": "2.1.3",
+    "react-tweet-embed": "^1.1.1",
+    "typeface-roboto": "0.0.54",
+    "typography": "^0.16.18",
+    "typography-breakpoint-constants": "^0.16.18",
+    "typography-plugin-code": "^0.16.18",
+    "unfetch": "^4.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {}
+}
