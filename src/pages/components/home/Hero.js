@@ -29,8 +29,10 @@ const Intro = () => (
   <div className={compose(styles.content)}>
     <h1 className={compose(styles.heading)}>Introducing CalderaMS</h1>
     <p className={compose(styles.subHeading)}>
-      CalderaMS is aiming to revolutionise how we manage libraries of data and
-      resources, one step at a time.
+      CalderaMS is the most up to date, intuitive and powerful library
+      management solution for the 21st century. CalderaMS is aiming to
+      revolutionise how we manage libraries of data and resources, one step at a
+      time.
     </p>
     <LatestRelease />
   </div>

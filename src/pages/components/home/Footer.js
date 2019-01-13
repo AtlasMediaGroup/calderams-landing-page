@@ -10,6 +10,7 @@
 import React, { Component } from 'react'
 import Container from '../../../components/Container'
 import { compose } from 'glamor'
+const latestDate = new Date().getFullYear()
 
 export default class ValueProps extends Component {
   render() {
@@ -18,7 +19,10 @@ export default class ValueProps extends Component {
         <Container>
           <p>
             <br />
-            CalderaMS is a brand of Atlas Media Group Ltd, company no 10639296
+            Copyright &copy; 2015-{latestDate} CalderaMS. All rights reserved -
+            CalderaMS is a brand of ATLAS Media Group Ltd.
+            <br /> ATLAS Media Group Ltd is a company registered in England
+            &amp; Wales. Company number 10639296.
           </p>
         </Container>
       </div>

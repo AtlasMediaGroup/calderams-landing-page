@@ -21,7 +21,7 @@ import {
   EntypoPaperPlane,
   EntypoLock,
   EntypoOpenBook,
-  EntypoFingerprint
+  EntypoKeyboard
 } from 'react-entypo'
 
 const ValueProp = ({ icon, text, title, text2, marginTop }) => {
@@ -79,7 +79,7 @@ export default class ValueProps extends Component {
               <ValueProp
                 title="Barcode Integration"
                 text="Add books via the scan of a barcode. CalderaMS aims to provide effortless management with optimum flexibility."
-                icon={<EntypoFingerprint style={styles.icon} />}
+                icon={<EntypoKeyboard style={styles.icon} />}
               />
             </Col>
             <Col>

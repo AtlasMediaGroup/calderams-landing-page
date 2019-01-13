@@ -22,7 +22,7 @@ export default class HomePage extends Component {
         <Helmet defaultTitle={'CalderaMS'} titleTemplate={'%s | CalderaMS'}>
           <meta name="twitter:site" content="@calderams" />
           <meta name="og:type" content="website" />
-          <meta name="og:site_name" content="CalderaMS Coming Soon" />
+          <meta name="og:site_name" content="CalderaMS" />
           <html lang="en" />
         </Helmet>
         <Hero />
