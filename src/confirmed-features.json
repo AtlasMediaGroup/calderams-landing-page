@@ -1,0 +1,45 @@
+{
+  "__COMMENT__": "This file can be used to add new confirmed features to the landing page.",
+  "features": {
+    "0": {
+      "title": "Secure Login & API Authentication",
+      "text": "Out of the box secure user login and registration capabilities, with APIs authenticated with JWT.",
+      "icon": "EntypoLock"
+    },
+    "1": {
+      "title": "Multi-resource support",
+      "text": "Support for managing everything from books, video, audio and text files. All included out of the box with seemless integration.",
+      "icon": "EntypoOpenBook"
+    },
+    "2": {
+      "title": "Barcode Integration",
+      "text": "Add books via the scan of a barcode. CalderaMS aims to provide effortless management with optimum flexibility.",
+      "icon": "EntypoKeyboard"
+    },
+    "3": {
+      "title": "Modern & Intuitive UI",
+      "text": "Using modern technologies, CalderaMS provides a stunning user interface for a hassle free, enjoyable experience.",
+      "icon": "EntypoLightBulb"
+    },
+    "4": {
+      "title": "Hassle free editing",
+      "text": "Keep things simple. Managing your resources shouldn't be a struggle. CalderaMS manages all your resources in one place, keeping you in complete control.",
+      "icon": "EntypoPencil"
+    },
+    "5": {
+      "title": "ISBN Catalogue Integration",
+      "text": "Auto-complete book searches with millions of book records from ISBN. Including ratings, description and book covers.",
+      "icon": "EntypoShuffle"
+    },
+    "6": {
+      "title": "Powerful User & Role Permissions",
+      "text": "Control every aspect of your library, from user roles, access permissions and permission levels.",
+      "icon": "EntypoUsers"
+    },
+    "7": {
+      "title": "In-Built Email Processing",
+      "text": "Send emails to your users, either manually or automatically based off pre-defined triggers. Managing your library and its users is a cinch.",
+      "icon": "EntypoPaperPlane"
+    }
+  }
+}
