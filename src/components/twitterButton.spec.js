@@ -8,12 +8,21 @@
  */
 
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { shallow, mount } from 'enzyme'
 import TwitterButton from './TwitterButton'
 
-describe('twitter button component', () => {
+describe('TwitterButton', () => {
   it('renders correctly', () => {
-    const domTree = renderer.create(<TwitterButton />).toJSON()
-    expect(domTree).toMatchSnapshot()
+    shallow(<TwitterButton />)
+  })
+
+  it('inner text rendered successfully', () => {
+    const wrapper = shallow(<TwitterButton href="testingHref" />)
+    expect(wrapper.text()).toEqual('Follow CalderaMS')
+  })
+
+  it('renders valid href prop', () => {
+    const wrapper = mount(<TwitterButton href="testHref" />)
+    expect(wrapper.prop('href')).toEqual('testHref')
   })
 })

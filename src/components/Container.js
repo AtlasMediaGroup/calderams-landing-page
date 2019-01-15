@@ -20,9 +20,8 @@ const styles = {
 }
 
 export default function Container({ width, ...props }) {
-  const size = !isNaN ? width : theme.container[width]
+  const size = !isNaN(width) ? width : theme.container[width]
 
-  //   return <div css={[styles.container, { maxWidth: size }]} {...props} />
   return (
     <div
       className={compose(

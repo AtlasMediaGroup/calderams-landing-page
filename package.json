@@ -7,6 +7,7 @@
   "dependencies": {
     "gatsby-plugin-glamor": "^2.0.7",
     "glamor": "^2.20.40",
+    "jsdom": "^13.1.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -25,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -37,5 +38,40 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {}
+  "devDependencies": {
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "jest-canvas-mock": "^1.1.1-beta.1",
+    "react-test-renderer": "^16.7.0",
+    "sinon": "^7.2.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "back-end/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/serviceWorker.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "standard": {
+    "globals": [
+      "fetch"
+    ],
+    "env": "jest",
+    "rules": {
+      "react/jsx-indent": "off"
+    }
+  }
 }
