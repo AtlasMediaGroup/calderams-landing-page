@@ -14,28 +14,7 @@ import confirmedFeatures from '../confirmed-features.json'
 import theme from '../theme'
 import Container from './Container'
 import * as Entypo from 'react-entypo-icons'
-
-const ValueProp = ({ icon, text, title, text2, marginTop }) => {
-  return (
-    <div
-      {...compose(
-        styles.base,
-        { marginTop }
-      )}
-    >
-      <i {...compose(styles.icon_inner)}>{icon}</i>
-      <div {...compose(styles.content)}>
-        <h3 {...compose(styles.title)}>{title}</h3>
-        <p {...compose(styles.text)}>{text}</p>
-        {text2 ? <p {...compose(styles.text)}>{text2}</p> : null}
-      </div>
-    </div>
-  )
-}
-
-ValueProp.defaultProps = {
-  marginTop: '3em'
-}
+import ValueProp from './ValueProps'
 
 export default class MakeFeatures extends React.Component {
   makeGrid = () => {
@@ -47,7 +26,7 @@ export default class MakeFeatures extends React.Component {
     ) {
       let FeatureIcon = Entypo[confirmedFeatures.features[i].icon]
       features.push(
-        <Col>
+        <Col key={i}>
           <ValueProp
             title={confirmedFeatures.features[i].title}
             text={confirmedFeatures.features[i].text}

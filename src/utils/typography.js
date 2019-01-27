@@ -95,6 +95,7 @@ const theme = {
 const typography = new Typography(theme)
 
 // Hot reload typography in development.
+/* istanbul ignore next */
 if (process.env.NODE_ENV !== 'production') {
   typography.injectStyles()
 }
