@@ -4,6 +4,12 @@
   "version": "0.1.0",
   "license": "Atlas Media Group Ltd",
   "private": true,
+  "authors": [
+  "Ryan Wild <ryan.wild@atlas-media.co.uk>"
+  "Matt Kent <matt.kent@calderams.com>",
+  "Mark Robertson <mark.robertson@atlan-event.com>",
+  "Alex Harris <alex.harris@atlas-media.co.uk>"
+  ],
   "dependencies": {
     "gatsby-plugin-glamor": "^2.0.7",
     "glamor": "^2.20.40",
