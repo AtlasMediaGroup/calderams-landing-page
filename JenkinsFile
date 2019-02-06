@@ -1,26 +1,23 @@
-def userInput = true
-def didTimeout = false
-try {
-    timeout(time: 15, unit: 'MINUTES') { // change to a convenient timeout for you
-        userInput = input(
-        id: 'Proceed1', message: 'Do you wish to store this build in Archiva?', parameters: [
-        [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please state if you do want the build to store in archiva?']
-        ])
-    }
-} catch(err) { // timeout reached or input false
-    def user = err.getCauses()[0].getUser()
-    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
-        didTimeout = true
-    } else {
-        userInput = false
-        echo "Aborted by: [${user}]"
-    }
-}
-
 pipeline {
     agent any
 
     stages {
+
+    stage("Gather Deployment Parameters") {
+        steps {
+            timeout(time: 30, unit: 'SECONDS') {
+                script {
+                    // Show the select input modal
+                   def INPUT_PARAMS = input message: 'Please Provide Parameters', ok: 'Next',
+                                    parameters: [
+                                    choice(name: 'ARCHIVA_STORE', choices: ['yes','no'].join('\n'), description: 'Would you like to save this build in Archiva?'),
+                                    choice(name: 'ENVIRONMENT', choices: ['sandbox','development','QA','demo'].join('\n'), description: 'Which environment would you like this build to be deployed to?'),
+                    env.ENVIRONMENT = INPUT_PARAMS.ENVIRONMENT
+                    env.ARCHIVA_STORE = INPUT_PARAMS.IMAGE_TAG
+                }
+            }
+        }
+    }
         stage('Checkout from SCM') {
             steps {
                 checkout scm
@@ -28,7 +25,7 @@ pipeline {
         }
         stage('Build Branch') {
             steps {
-                echo 'Do the testing steps here please.'
+                echo 'build a branch here please'
             }
         }
         stage('Run Test'){
@@ -46,19 +43,12 @@ pipeline {
         }
         }
 
-        stage('Store In Archiva?') {
-        steps {
-          script{
-            if (didTimeout) {
-            echo "no input was received before timeout"
-            } else if (userInput == true) {
-            echo "this was successful"
-            } else {
-            echo "this was not successful"
-            currentBuild.result = 'FAILURE'
-            } }
+        if (${env.ARCHIVA_STORE == 'yes'}) {
+        stage('Store In Archiva') {
+          steps {
+            echo 'do some magic to store in archiva'
+          }
         }
-        }
-
+        } 
     }
 }
