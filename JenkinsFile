@@ -44,6 +44,8 @@ pipeline {
         }
         stage('Store In Archiva') {
             steps {
+              echo '${ENVIRONMENT}'
+              echo env.ENVIRONMENT
                 script{
                     if(env.ENVIRONMENT == 'Yes'){
                         echo 'This would be where you store in Archiva'
