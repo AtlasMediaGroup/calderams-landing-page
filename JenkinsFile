@@ -43,12 +43,13 @@ pipeline {
         }
         }
 
+        stage('Check Storage & Deployment Requirements'){
         if (${env.ARCHIVA_STORE == 'yes'}) {
         stage('Store In Archiva') {
           steps {
             echo 'do some magic to store in archiva'
           }
         }
-        }
+        }}
     }
 }
