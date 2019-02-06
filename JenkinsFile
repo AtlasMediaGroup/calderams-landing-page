@@ -51,8 +51,9 @@ pipeline {
               }
             }
             steps {
+            CHOICE = ${params.CHOICE}
                 script{
-                    if(${params.CHOICE} == 'One'){
+                    if(env.CHOICE == 'One'){
                         echo 'This would be where you store in Archiva'
                     }else{
                         echo 'End of build because you are not storing in archiva'
