@@ -43,17 +43,9 @@ pipeline {
         }
         }
         stage('Store In Archiva') {
-
-            input{
-              message "Would you like to store the build in Archiva?"
-              parameters {
-                choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-              }
-            }
             steps {
-            CHOICE = ${params.CHOICE}
                 script{
-                    if(env.CHOICE == 'One'){
+                    if(env.ENVIRONMENT == 'Yes'){
                         echo 'This would be where you store in Archiva'
                     }else{
                         echo 'End of build because you are not storing in archiva'
