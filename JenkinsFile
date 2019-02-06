@@ -1,7 +1,64 @@
-node {
-    stage 'Checkout from SCM'
+def userInput = true
+def didTimeout = false
+try {
+    timeout(time: 15, unit: 'MINUTES') { // change to a convenient timeout for you
+        userInput = input(
+        id: 'Proceed1', message: 'Do you wish to store this build in Archiva?', parameters: [
+        [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please state if you do want the build to store in archiva?']
+        ])
+    }
+} catch(err) { // timeout reached or input false
+    def user = err.getCauses()[0].getUser()
+    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
+        didTimeout = true
+    } else {
+        userInput = false
+        echo "Aborted by: [${user}]"
+    }
+}
 
-    checkout scm
+pipeline {
+    agent any
 
-    echo "yay the code checked out?"
+    stages {
+        stage('Checkout from SCM') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build Branch') {
+            steps {
+                echo 'Do the testing steps here please.'
+            }
+        }
+        parallel {
+            stage('Run Unit Tests') {
+                steps {
+                    echo 'Run all the unit tests here please'
+                }
+            }
+            stage('Run Mutation Tests') {
+                steps {
+                    echo 'Run all the mutation tests here please'
+                }
+            }
+        }
+
+        stage('Store In Archiva?') {
+            steps {
+            if (didTimeout) {
+    // do something on timeout
+    echo "no input was received before timeout - Storing build in archiva"
+} else if (userInput == true) {
+    // do something
+    echo "Confirmed the build should be stored in archiva, continuing"
+} else {
+    // do something else
+    echo "Requested build not be stored in Archiva, build terminating. "
+    currentBuild.result = 'FAILURE'
+}
+            }
+        }
+
+    }
 }
