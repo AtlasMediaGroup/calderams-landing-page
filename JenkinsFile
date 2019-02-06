@@ -47,12 +47,12 @@ pipeline {
             input{
               message "Would you like to store the build in Archiva?"
               parameters {
-                  choice(name: 'ARCHIVA_STOREAGE', choices: ['Yes','No'].join('\n'), description: 'Would you like to save this build in Archiva?')
+                choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
               }
             }
             steps {
                 script{
-                    if(${params.ARCHIVA_STOREAGE} == 'Yes'){
+                    if(${params.CHOICE} == 'One'){
                         echo 'This would be where you store in Archiva'
                     }else{
                         echo 'End of build because you are not storing in archiva'
