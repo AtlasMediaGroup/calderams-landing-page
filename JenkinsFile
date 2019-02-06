@@ -31,6 +31,7 @@ pipeline {
                 echo 'Do the testing steps here please.'
             }
         }
+        stage('Run Test'){
         parallel {
             stage('Run Unit Tests') {
                 steps {
@@ -43,21 +44,19 @@ pipeline {
                 }
             }
         }
+        }
 
         stage('Store In Archiva?') {
-            steps {
+        steps {
             if (didTimeout) {
-    // do something on timeout
-    echo "no input was received before timeout - Storing build in archiva"
-} else if (userInput == true) {
-    // do something
-    echo "Confirmed the build should be stored in archiva, continuing"
-} else {
-    // do something else
-    echo "Requested build not be stored in Archiva, build terminating. "
-    currentBuild.result = 'FAILURE'
-}
+            echo "no input was received before timeout"
+            } else if (userInput == true) {
+            echo "this was successful"
+            } else {
+            echo "this was not successful"
+            currentBuild.result = 'FAILURE'
             }
+        }
         }
 
     }
