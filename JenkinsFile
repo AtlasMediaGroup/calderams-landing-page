@@ -11,9 +11,9 @@ pipeline {
                    def INPUT_PARAMS = input message: 'Please Provide Parameters', ok: 'Next',
                                     parameters: [
                                     choice(name: 'ARCHIVA_STORE', choices: ['Yes','No'].join('\n'), description: 'Would you like to save this build in Archiva?'),
-                                    choice(name: 'ENVIRONMENT', choices: ['Sandbox','Development','QA','Demo'].join('\n'), description: 'Which environment would you like this build to be deployed to?')]
-                    env.ENVIRONMENT = INPUT_PARAMS.ARCHIVA_STORE
-                    env.ARCHIVA_STORE = INPUT_PARAMS.ENVIRONMENT
+                                    choice(name: 'ENVIRONMENT', choices: ['Sandbox','Development','QA','Demo','OPS'].join('\n'), description: 'Which environment would you like this build to be deployed to?')]
+                    env.ARCHIVA_STORE = INPUT_PARAMS.ARCHIVA_STORE
+                    env.ENVIRONMENT = INPUT_PARAMS.ENVIRONMENT
                 }
             }
         }
@@ -45,12 +45,30 @@ pipeline {
         stage('Store In Archiva') {
             steps {
                 script{
-                    if(env.ENVIRONMENT == 'Yes'){
+                    if(env.ARCHIVA_STORE == 'Yes'){
                         echo 'This would be where you store in Archiva'
                     }else{
                         echo 'End of build because you are not storing in archiva'
                         currentBuild.result = 'SUCCESS'
                     }
+                }
+            }
+        }
+
+        stage('Deployment') {
+            steps {
+                script{
+                    if(env.ENVIRONMENT == 'Sandbox'){
+                        echo 'Sandbox Deployment here'
+                    }else if(env.ENVIRONMENT == 'Development'){
+                        echo 'Development Deployment Here'
+                    }else if(env.ENVIRONMENT == 'QA'){
+                        echo 'QA Deployment Here'
+                    }else if(env.ENVIRONMENT == 'Demo'){
+                        echo 'Demo Deployment Here'
+                    }else if(env.ENVIRONMENT == 'OPS'){
+                        echo 'OPS Deployment Here'
+                  }
                 }
             }
         }
