@@ -26,7 +26,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "npm run test && react-scripts build",
-    "test": "react-scripts test --coverage --env=jsdom",
+    "jenkins-build": "react-scripts build",
+    "test": "react-scripts test --coverage --env=jsdom --coverageDirectory=output/coverage/jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
