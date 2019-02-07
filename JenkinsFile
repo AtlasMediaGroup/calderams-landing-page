@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+    tools {nodejs "node"}
+
     stages {
 
     stage("Gather Deployment Parameters") {
@@ -25,14 +27,15 @@ pipeline {
         }
         stage('Build Branch') {
             steps {
-                echo 'build a branch here please'
+                sh 'npm install'
+                sh 'npm run build'
             }
         }
         stage('Run Test'){
         parallel {
             stage('Run Unit Tests') {
                 steps {
-                    echo 'Run all the unit tests here please'
+                    sh 'npm t'
                 }
             }
             stage('Run Mutation Tests') {
