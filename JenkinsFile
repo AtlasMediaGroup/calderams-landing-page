@@ -25,15 +25,15 @@ pipeline {
         }
         stage('Install Toolset') {
             steps {
-                sh 'npm install react-scripts'
-                sh 'npm install'
+                sh 'npm install react-scripts --force'
+                sh 'npm install --force'
             }
         }
         stage('Run Test'){
         parallel {
             stage('Run Unit Tests') {
                 steps {
-                    sh 'npm t 2>&1 | tee testlog.txt'
+                    sh 'npm t'
                 }
                 post {
                     always {
