@@ -32,7 +32,7 @@ pipeline {
         parallel {
             stage('Run Unit Tests') {
                 steps {
-                    sh 'npm t'
+                    sh 'npm t 2>&1 | tee testlog.txt'
                 }
             }
             stage('Run Mutation Tests') {
@@ -81,6 +81,12 @@ pipeline {
         }
 
 
+    }
+
+    post {
+        always {
+            junit 'build/**/testlog.txt'
+        }
     }
 
 
