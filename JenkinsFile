@@ -23,10 +23,9 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build Branch') {
+        stage('Install Toolset') {
             steps {
                 sh 'npm install'
-                sh 'npm run build'
             }
         }
         stage('Run Test'){
@@ -53,6 +52,13 @@ pipeline {
                         currentBuild.result = 'SUCCESS'
                     }
                 }
+            }
+        }
+
+
+        stage('Build Branch') {
+            steps {
+                sh 'npm run build'
             }
         }
 
