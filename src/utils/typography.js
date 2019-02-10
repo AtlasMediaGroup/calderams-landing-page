@@ -94,10 +94,8 @@ const theme = {
 
 const typography = new Typography(theme)
 
-// Hot reload typography in development.
+// inject styles
 /* istanbul ignore next */
-if (process.env.NODE_ENV !== 'production') {
   typography.injectStyles()
-}
 
 export default typography
