@@ -86,7 +86,7 @@ const Intro = () => (
 const LatestRelease = () => (
   <div className={compose(styles.release)}>
     <span className={compose(styles.releaseMain)}>
-      Planned release date: <strong>Q3 2019</strong>
+      Planned release date: <strong>Q4 2019</strong>
     </span>
   </div>
 )
